@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FormWrapper, Input, Button } from './styles'
+import { Input, Button } from './styles'
 
 const initialForm = {
   id: null,
@@ -45,12 +45,11 @@ const Form = ({ createData, updateData, editedData, setEditedData }) => {
   }
 
   return (
-    <FormWrapper>
-      <form onSubmit={handleSubmit}>
-        <Input type='text' name='description' placeholder='Task' value={form.description} onChange={handleChange} />
-        <Button>Save</Button>
-      </form>
-    </FormWrapper>
+    <form onSubmit={handleSubmit}>
+      <Input type='text' name='description' placeholder='Task' value={form.description} onChange={handleChange} />
+      <Button>Save</Button>
+      {editedData && <Button onClick={handleReset}>Reset</Button>}
+    </form>
   )
 };
 

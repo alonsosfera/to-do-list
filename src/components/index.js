@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentsWrapper, H1 } from './styles';
+import { FormWrapper } from './form/styles';
 import Form from "../components/form";
 import List from "../components/table";
 import Head from "next/head";
@@ -15,9 +16,14 @@ const Components = () => {
     setTasks([...tasks, data]);
   }
 
-  const deleteData = (id) => {
-    let newTasks = tasks.filter((el) => el.id !== id);
-    setTasks(newTasks);
+  const deleteData = (data) => {
+    let confirmDelete = window.confirm(`Do you really want to delete "${data.description}" ?`); 
+    if (confirmDelete) {
+      let newTasks = tasks.filter((el) => el.id !== data.id);
+      setTasks(newTasks);
+    } else{
+      return;
+    }
   };
 
   const updateData = (form) => {
@@ -31,7 +37,10 @@ const Components = () => {
         <title>To do List</title>
       </Head>
       <H1 >To do List</H1>
-      <Form setEditedData={setEditedData} editedData={editedData} createData={createData} updateData={updateData} />
+      <FormWrapper>
+        {editedData ? <h3>Edit Task</h3> : <h3>Add Task</h3> }
+        <Form setEditedData={setEditedData} editedData={editedData} createData={createData} updateData={updateData} />
+      </FormWrapper>
       <List tasks={tasks} deleteData={deleteData} setEditedData={setEditedData} />
     </ComponentsWrapper >
   )

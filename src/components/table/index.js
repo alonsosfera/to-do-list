@@ -12,7 +12,7 @@ const List = ({ tasks, deleteData, setEditedData }) => {
         </tr>
       </thead>
       <tbody>
-        {tasks.length === 0 ? <tr><Td colSpan='3'>No data</Td></tr> : tasks.map(el => <TRow key={el.id} el={el} deleteData={deleteData} setEditedData={setEditedData} />)}
+        {tasks.length === 0 ? <tr><Td colSpan='3'><b>No data</b></Td></tr> : tasks.map(el => <TRow key={el.id} el={el} deleteData={deleteData} setEditedData={setEditedData} />)}
       </tbody>
     </Table>
   )
