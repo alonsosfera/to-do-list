@@ -1,7 +1,7 @@
+import Components from "../components";
+
 export default function Home() {
   return (
-    <div>
-      HOME
-    </div>
+    <Components />
   );
 }
